@@ -1,6 +1,14 @@
+http://example.com/2022/08/01/xue-xi-wen-dang/
+http://example.com/2022/09/14/css-shu-li/
+http://example.com/2022/07/31/html-shu-li/
+http://example.com/2022/09/09/index/
+http://example.com/2022/08/01/shu-ju-jie-gou/
+http://example.com/2022/08/30/js-shu-li/
+http://example.com/2022/07/18/promise/
+http://example.com/2022/07/18/hello-world/
 http://example.com/contact/index.html
 http://example.com/about/index.html
 http://example.com/categories/index.html
 http://example.com/tags/index.html
-http://example.com/2022/07/18/hello-world/
 http://example.com/
+http://example.com/tags/%E5%85%AB%E8%82%A1%E6%96%87/
