@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>兴趣使然的博客</title>
   
   
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-09-14T13:04:47.278Z</updated>
+  <updated>2022-09-16T02:48:55.677Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,61 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://example.com/2022/09/14/css-shu-li/"/>
-    <id>http://example.com/2022/09/14/css-shu-li/</id>
-    <published>2022-09-14T06:47:57.324Z</published>
-    <updated>2022-09-14T13:04:47.278Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CSS：层叠样式表"><a href="#CSS：层叠样式表" class="headerlink" title="CSS：层叠样式表"></a>CSS：层叠样式表</h1><pre><code>由选择符和声明组成</code></pre><h2 id="样式引入"><a href="#样式引入" class="headerlink" title="样式引入"></a>样式引入</h2><pre><code>内部样式：&lt;style&gt;&lt;/style&gt;标签，一般在head标签内    副作用：外部样式：(结构样式分离，推荐使用)    link标签：        rel：'stylesheet'        type：'text/css'        href：路径        区别：            属于XHTML标签            link引用的CSS会同时被加载    style标签：        @import url("路径")        区别：            CSS提供的一种方式            全部下载完再被加载            出来的时间有点老，只在IE5以上才能识别行内样式：    style作为属性直接写在标签后面样式优先级(就近原则)    内联样式最优先；外部和内部一样，看谁覆盖，一般先写外部再写内部    ！important：开挂加权重</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>标签选择器（element选择器）    eg：div{属性名：属性值}    以文档语言对象作为选择器，即使用结构总中元素名称作为选择符类选择器    eg：.class名{属性：属性值}    &lt;style&gt;        a{            color:red        }        b{            color:yellow        }    &lt;/style&gt;    &lt;div class="a b"&gt;&lt;/div&gt;    标签里的属性可设置多个，样式优先级看style里的属性位置id选择器    #id名{属性：属性值}    唯一性通配符选择器    *{属性：属性值}    一般用来格式化内外边距群组选择器    , 合并选择器，节约代码量后代选择器    空格伪类选择器    :link{属性：属性值} 初始状态    :visited{属性：属性值} 被访问后状态    :hover{属性：属性值} 鼠标悬浮状态    :active{属性：属性值} 激活时状态，即鼠标按下状态    书写顺序：link-visited-hover-active选择器的权重    !important      10000    内联            1000    id              100    class           10    元素(标签)       1    包含选择符      权重之和比较，但不会越级规则    当不同选择符的样式设置有冲突的时候，高权重选择符的样式会覆盖低权重选择符的样式    相同权重的选择符，样式遵循就近原则：那个选择符最后定义，就采用那个选择符样式</code></pre><h2 id="文本属性"><a href="#文本属性" class="headerlink" title="文本属性"></a>文本属性</h2><pre><code>    font-size：字体大小;单位是px，浏览器默认是16px，设计图常用字号是12px    font-family：字体;    color:字体颜色    font-weight：加粗    font-style：倾斜 italic(倾斜)/oblique(倾斜的字体)/normal（正常）    text-align：文本水平对齐        left        right        center        justify    line-height：行高    text-indent:首行缩进，只对第一行起作用    letter-spacing：字间距    text-decoration：文本修饰    font：文字简写</code></pre><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;CSS：层叠样式表&quot;&gt;&lt;a href=&quot;#CSS：层叠样式表&quot; class=&quot;headerlink&quot; title=&quot;CSS：层叠样式表&quot;&gt;&lt;/a&gt;CSS：层叠样式表&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;由选择符和声明组成
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;样式</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://example.com/2022/09/09/index/"/>
-    <id>http://example.com/2022/09/09/index/</id>
-    <published>2022-09-09T15:49:34.666Z</published>
-    <updated>2022-09-13T13:35:29.053Z</updated>
-    
-    <content type="html"><![CDATA[    <ol>        <li>123</li>        <li>345</li>        <li>456</li>    </ol>    <ul type="none">        <li>1</li>        <li>2</li>        <li>3</li>        <li>4</li>    </ul>    <dl>        <dt>图片</dt>        <dd>文字</dd>    </dl>    <a href="https://www.baidu.com" target="_blank">百度</a>    <!-- table数据表格 -->    <table border="1" width="500" align="center" cellspacing="0">        <tbody><tr>            <td>1</td>            <td>2</td>        </tr>        <tr>            <td width="200">3</td>            <td>4</td>        </tr>        <tr>            <td>5</td>            <td>6</td>        </tr>    </tbody></table>    <table border="1" bordercolor="blue" align="center" cellspacing="0" cellpadding="0">        <tbody><tr align="center">            <td width="100">会员姓名</td>            <td width="150"></td>            <td width="100">出生日期</td>            <td width="150"></td>        </tr>        <tr align="center">            <td>身份证号</td>            <td colspan="3"></td>        </tr>        <tr align="center">            <td>通信地址</td>            <td colspan="3"></td>        </tr>        <tr align="center">            <td>联系电话</td>            <td colspan="3"></td>        </tr>        <tr align="center">            <td>会员卡号</td>            <td colspan="3"></td>        </tr>    </tbody></table>    <form action="">        用户信息：<input type="text" placeholder="请属于用户名">    </form>    <div>        <div>            <div>                <div>                    <div>                        <div>                            <div>                                <div>                                    <div>                                        <div>                                            <div class="h11">                                                11                                            </div>                                        </div>                                    </div>                                </div>                            </div>                        </div>                    </div>                </div>            </div>        </div>    </div><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
-    
-    
-      
-      
-    <summary type="html">
-    &lt;ol&gt;
-        &lt;li&gt;123&lt;/li&gt;
-        &lt;li&gt;345&lt;/li&gt;
-        &lt;li&gt;456&lt;/li&gt;
-    &lt;/ol&gt;
-    &lt;ul type=&quot;none&quot;&gt;
-        &lt;li&gt;1&lt;/li&gt;
-        &lt;li&gt;2&lt;/li</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>JS梳理</title>
     <link href="http://example.com/2022/08/30/js-shu-li/"/>
     <id>http://example.com/2022/08/30/js-shu-li/</id>
     <published>2022-08-30T07:37:35.000Z</published>
-    <updated>2022-08-30T07:37:35.607Z</updated>
+    <updated>2022-09-16T02:48:55.677Z</updated>
     
     <content type="html"><![CDATA[<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
     
@@ -83,6 +33,10 @@
     
     
     
+    <category term="JS" scheme="http://example.com/categories/JS/"/>
+    
+    
+    <category term="JS" scheme="http://example.com/tags/JS/"/>
     
   </entry>
   
@@ -91,7 +45,7 @@
     <link href="http://example.com/2022/08/01/shu-ju-jie-gou/"/>
     <id>http://example.com/2022/08/01/shu-ju-jie-gou/</id>
     <published>2022-08-01T09:29:36.000Z</published>
-    <updated>2022-09-01T09:55:34.570Z</updated>
+    <updated>2022-09-17T08:47:27.130Z</updated>
     
     <content type="html"><![CDATA[<h1 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h1><p>时间复杂度是一个函数，它定性描述该算法的运行时间，在软件开发中，时间复杂度就是用来方便开发者估算出程序运行时间，通常用算法的操作单元数量来代表程序消耗的时间，这里默认CPU的每个单元运行消耗的时间都是相同的。假设算法的问题规模为n，那么操作单元数量便用函数f(n)来表示，随着数据规模n的增大，算法执行时间的增长率和f(n)的增长率呈现一定的关系，这称作为算法的渐近时间复杂度，简称时间复杂度，记为 O(f(n))，其中n指的是指令集的数目。</p><h2 id="什么是大O"><a href="#什么是大O" class="headerlink" title="什么是大O"></a>什么是大O</h2><p>大O用来表示算法执行时间的上界，也可以理解为最差情况下运行的时间，数据量和顺序等情况对算法的执行时间有非常大的影响，这里假设的是某个输入数据用该算法运行的时间，比其他数据的运算时间都要长。</p><h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度指的是算法在运行过程中所占存储空间的大小，空间复杂度(Space Complexity)记作S(n) ，依然使用大O来表示。利用程序的空间复杂度，可以对程序运行中需要多少内存有个预先估计。</p><h2 id="常见的空间复杂度"><a href="#常见的空间复杂度" class="headerlink" title="常见的空间复杂度"></a>常见的空间复杂度</h2><p>一维数组空间，如果存储了n个元素，空间复杂度O(n)<br>二维数组空间，总共有n个数组，每个数组存储了n个元素，空间复杂度O(n^2)<br>常数空间复杂度O(1)</p><h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>英文：Dynamic Programming，简称DP，将问题分解为互相重叠的子问题，通过反复求解子问题来解决原问题就是动态规划，如果某一问题有很多重叠子问题，使用动态规划来解是比较有效的。</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
     
@@ -107,13 +61,13 @@
   </entry>
   
   <entry>
-    <title>数据结构</title>
-    <link href="http://example.com/2022/08/01/xue-xi-wen-dang/"/>
-    <id>http://example.com/2022/08/01/xue-xi-wen-dang/</id>
+    <title>Markdown语法</title>
+    <link href="http://example.com/2022/08/01/markdown/"/>
+    <id>http://example.com/2022/08/01/markdown/</id>
     <published>2022-08-01T09:29:36.000Z</published>
-    <updated>2022-09-14T13:04:47.279Z</updated>
+    <updated>2022-09-16T02:48:04.307Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h1><h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><h3 id="1-使用-表示标题，其中-号必须在行首，例如："><a href="#1-使用-表示标题，其中-号必须在行首，例如：" class="headerlink" title="1.使用#表示标题，其中#号必须在行首，例如："></a>1.使用<code>#</code>表示标题，其中#号必须在行首，例如：</h3><h1 id="一号标题"><a href="#一号标题" class="headerlink" title="一号标题"></a>一号标题</h1><h2 id="二号标题"><a href="#二号标题" class="headerlink" title="二号标题"></a>二号标题</h2><h3 id="三号标题"><a href="#三号标题" class="headerlink" title="三号标题"></a>三号标题</h3><h4 id="四号标题"><a href="#四号标题" class="headerlink" title="四号标题"></a>四号标题</h4><h5 id="五号标题"><a href="#五号标题" class="headerlink" title="五号标题"></a>五号标题</h5><h6 id="六号标题"><a href="#六号标题" class="headerlink" title="六号标题"></a>六号标题</h6><hr><h2 id="二、分割线"><a href="#二、分割线" class="headerlink" title="二、分割线"></a>二、分割线</h2><p>使用三个或以上的<code>-</code>或者<code>*</code>表示<br>且这一行只有符号，注意不要被识别为二级标题即可，例如中间或者前面可以加空格</p><hr><hr><h2 id="三、斜体和粗体"><a href="#三、斜体和粗体" class="headerlink" title="三、斜体和粗体"></a>三、斜体和粗体</h2><p>使用<code>*</code>和<code>**</code>分别表示斜体和粗体，例如<br><em>斜体</em> <strong>粗体</strong> <em><strong>又斜又粗</strong></em></p><p>扩展：<br>删除线使用两个<code>~</code>表示：<br><del>我是要删掉的文字</del></p><hr><h2 id="四、超链接和图片"><a href="#四、超链接和图片" class="headerlink" title="四、超链接和图片"></a>四、超链接和图片</h2><p>链接和图片的写法类似，图片仅在超链接前多了一个 ! ，一般是 [文字描述] (链接)例如：<br><a href="https://www.baidu.com/">百度</a><br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="图片描述"></p><hr><h2 id="五、无序列表"><a href="#五、无序列表" class="headerlink" title="五、无序列表"></a>五、无序列表</h2><p>使用<code>-</code>、<code>+</code>和<code>#</code>表示无序列表<br>例如</p><ul><li>一层<ul><li>二层<ul><li>三层</li></ul></li></ul></li></ul><hr><h2 id="六、有序列表"><a href="#六、有序列表" class="headerlink" title="六、有序列表"></a>六、有序列表</h2><p>使用<code>1. </code>（点号后面有个空格）表示有序列表，可嵌套。</p><ol><li>一层<ol><li>二层</li><li>二层</li></ol></li><li>一层</li></ol><hr><h2 id="七、文字引用"><a href="#七、文字引用" class="headerlink" title="七、文字引用"></a>七、文字引用</h2><p>使用 <code>&gt;</code> 表示，可以有多个 &gt;，表示层级更深，例如</p><blockquote><p>第一层</p><blockquote><p>第二层<br>这样是跳不出去的</p><blockquote><p>更深一层</p></blockquote></blockquote></blockquote><blockquote><p>跳出去</p></blockquote><hr><h2 id="八、行内代码块"><a href="#八、行内代码块" class="headerlink" title="八、行内代码块"></a>八、行内代码块</h2><p>`表示 <code>行内代码块</code></p><hr><h2 id="九、代码块"><a href="#九、代码块" class="headerlink" title="九、代码块"></a>九、代码块</h2><p>使用四个空格缩进表示代码块，一些 IDE 支持行数提示和着色，一般使用三个 ` 表示，例如</p><pre><code>public class HelloWorld{    System.out.println("HELLO WORLD!");}</code></pre><hr><h2 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h2><p>直接看例子，第二行的<code>---</code>表示了对齐方式</p><table><thead><tr><th>商品</th><th align="right">数量</th><th align="center">单价</th></tr></thead><tbody><tr><td>苹果</td><td align="right">10</td><td align="center">$1</td></tr><tr><td>电脑</td><td align="right">1</td><td align="center">$100</td></tr></tbody></table><p>W3C标准</p><p>HTML：(Hyper Text Markup Language)超文本标记语言</p><p>Web标准</p><p>常规标记：双标记 &lt;标记&gt;&lt;/标记&gt;</p><p>空标记：单标记 &lt;标记/&gt;</p><p>DOCTYPE：文档声明标签<br><code>&lt;!DOCTYPE html&gt;</code></p><p>html标签:<br><code>&lt;html lang='en'&gt;&lt;/html&gt;</code><br>‘en’:英文; ‘zh-CN’:中文; ‘ja-jp’:日文</p><p>meta标签：<meta charset="***"><br>UTF-8</p><p>Web语义化：</p><ol><li>裸奔好看</li><li>爬虫喜欢</li><li>方便维护</li></ol><p>常用标签:<br>1、文本标签(h1-h6)<br><code>&lt;hn&gt;</code><br>权重h1最重，爬虫理解<br>2、段落标签(p)<br>3、换行(br)<br>4、水平线(hr)  </p><hr>5、加粗标记<p><code>&lt;strong&gt;&lt;/strong&gt;</code></p><p><code>&lt;b&gt;&lt;/b&gt;</code></p><p>6、倾斜标签</p><p><code>&lt;em&gt;&lt;/em&gt;</code></p><p><code>&lt;i&gt;&lt;/i&gt;</code></p><p>7、删除标签</p><p><code>&lt;del&gt;&lt;/del&gt;</code></p><p><code>&lt;s&gt;&lt;/s&gt;</code></p><p>8、扩展</p><p><code>&lt;u&gt;下划线&lt;/u&gt;</code></p><p><code>&lt;sub&gt;下标&lt;/sub&gt;</code></p><p><code>&lt;sup&gt;上标&lt;/sup&gt;</code></p><p>不一般的hr</p><hr color="red" width="300px" align="left"><hr noshade=""><p>特殊符号<br>    &amp;lt &lt;<br>    &amp;gt &gt;<br>    空格<br>        &amp;nbsp 该空格占据宽度受字影响而强烈<br>        &amp;emsp 占据宽度正好是1个中文的宽度，且基本上不受字体影响<br>    版权 &amp;copy ©<br>    商标<br>        &amp;trade ™<br>        &amp;reg</p><p>div：块级元素<br>    没有具体含义，用来划分页面的区域，独占一行</p><p>span：行内元素<br>    没有实际意义，主要用在文本样式修改时候，内容有多宽就占用多宽的空间距离</p><p>列表<br>    有序列表(order list)<br>        ol&gt;li<br>        ol里面可以随意放标签，但是ol里面只能放置li<br>        数字是自动生成的<br>        属性<br>            type:1,a,A,i,I<br>            start:取值只能是一个数字<br>    无序列表(Unordered list)<br>        ul&gt;li<br>        ul里面只能放li，li里面可以放其他标签<br>        默认是黑色的实心圆<br>        属性：<br>            type：disc，circle，square，none<br>    自定义列表<br>        dl&gt;dt|dd</p><p>图片标签的路径<br>    img标签<br>    src<br>        绝对路径是指文件在硬盘上真正存在的路径<br>        相对路径就是相对于自己的目标文件位置</p><p>图片标签的属性<br>    src路径信息<br>    title鼠标悬停上去的提示信息<br>    alt图片加载失败的提示信息<br>    width<br>    height</p><p>超链接标签<br>    实现不同页面的跳转<br>    属性<br>        href:跳转链接<br>        title：鼠标悬浮提示<br>        target：打开方式<br>            _self:默认值，本页面打开<br>            _blank:新窗口打开</p><p>table表格的基本结构<br>     tr:行(table row)<br>     td:列<br>    表格属性<br>        width：宽度<br>        height：高度<br>        border：边框<br>        bordercolor：边框颜色<br>        bgcolor：背景颜色<br>        align：水平对齐<br>        cellspacing：单元格之间的间距<br>        cellpadding：单元格内边距<br>    tr属性(width不生效)<br>        height：高度<br>        bgcolor：背景颜色<br>        align：文字水平对齐<br>        valign：文字垂直对齐<br>    td属性<br>        width：宽度 （影响一整列）<br>        height：高度 （影响一整行）<br>        bgcolor：背景颜色<br>        align：文字水平对齐<br>        valign：文字垂直对齐<br>    表格合并<br>        colspan：合并列数，必须是td<br>        rowspan：合并行数，必须是td<br>    表单标签<br>        form标签<br>            action：传输数据地址<br>            method：方法post、get<br>                get<br>                    是从服务器上获取数据<br>                    把参数数据队列加到提交表单的ACTION所指的URL中，值和表单内字段一一对应，在URL中可以看到。<br>                    Request.QueryString获取<br>                    传输数据量小，不能大于2KB<br>                    安全性低，效率好<br>                post<br>                    是向服务器传送数据<br>                    通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION所指的URL地址，用户看不见整个过程。<br>                    Request.Query获取<br>                    数据量大，最大80KB<br>                    安全性高<br>            input标签<br>                type：<br>                    text:文本框<br>                    submit：提交框<br>                    button：按钮框<br>                    reset：重置框<br>                    password：密码框<br>                placeholder：描述输入字段预期值的简短的提示信息兼容到IE8以上<br>                name：必须设置，后端获取的key值<br>                value：按钮显示值</p><pre><code>&lt;script&gt;&lt;/script&gt;</code></pre><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+    <content type="html"><![CDATA[<h1 id="markdown"><a href="#markdown" class="headerlink" title="markdown"></a>markdown</h1><h2 id="一、标题"><a href="#一、标题" class="headerlink" title="一、标题"></a>一、标题</h2><h3 id="1-使用-表示标题，其中-号必须在行首，例如："><a href="#1-使用-表示标题，其中-号必须在行首，例如：" class="headerlink" title="1.使用#表示标题，其中#号必须在行首，例如："></a>1.使用<code>#</code>表示标题，其中#号必须在行首，例如：</h3><h1 id="一号标题"><a href="#一号标题" class="headerlink" title="一号标题"></a>一号标题</h1><h2 id="二号标题"><a href="#二号标题" class="headerlink" title="二号标题"></a>二号标题</h2><h3 id="三号标题"><a href="#三号标题" class="headerlink" title="三号标题"></a>三号标题</h3><h4 id="四号标题"><a href="#四号标题" class="headerlink" title="四号标题"></a>四号标题</h4><h5 id="五号标题"><a href="#五号标题" class="headerlink" title="五号标题"></a>五号标题</h5><h6 id="六号标题"><a href="#六号标题" class="headerlink" title="六号标题"></a>六号标题</h6><hr><h2 id="二、分割线"><a href="#二、分割线" class="headerlink" title="二、分割线"></a>二、分割线</h2><p>使用三个或以上的<code>-</code>或者<code>*</code>表示<br>且这一行只有符号，注意不要被识别为二级标题即可，例如中间或者前面可以加空格</p><hr><hr><h2 id="三、斜体和粗体"><a href="#三、斜体和粗体" class="headerlink" title="三、斜体和粗体"></a>三、斜体和粗体</h2><p>使用<code>*</code>和<code>**</code>分别表示斜体和粗体，例如<br><em>斜体</em> <strong>粗体</strong> <em><strong>又斜又粗</strong></em></p><p>扩展：<br>删除线使用两个<code>~</code>表示：<br><del>我是要删掉的文字</del></p><hr><h2 id="四、超链接和图片"><a href="#四、超链接和图片" class="headerlink" title="四、超链接和图片"></a>四、超链接和图片</h2><p>链接和图片的写法类似，图片仅在超链接前多了一个 ! ，一般是 [文字描述] (链接)例如：<br><a href="https://www.baidu.com/">百度</a><br><img src="/%E5%9B%BE%E7%89%87%E5%9C%B0%E5%9D%80" alt="图片描述"></p><hr><h2 id="五、无序列表"><a href="#五、无序列表" class="headerlink" title="五、无序列表"></a>五、无序列表</h2><p>使用<code>-</code>、<code>+</code>和<code>#</code>表示无序列表<br>例如</p><ul><li>一层<ul><li>二层<ul><li>三层</li></ul></li></ul></li></ul><hr><h2 id="六、有序列表"><a href="#六、有序列表" class="headerlink" title="六、有序列表"></a>六、有序列表</h2><p>使用<code>1. </code>（点号后面有个空格）表示有序列表，可嵌套。</p><ol><li>一层<ol><li>二层</li><li>二层</li></ol></li><li>一层</li></ol><hr><h2 id="七、文字引用"><a href="#七、文字引用" class="headerlink" title="七、文字引用"></a>七、文字引用</h2><p>使用 <code>&gt;</code> 表示，可以有多个 &gt;，表示层级更深，例如</p><blockquote><p>第一层</p><blockquote><p>第二层<br>这样是跳不出去的</p><blockquote><p>更深一层</p></blockquote></blockquote></blockquote><blockquote><p>跳出去</p></blockquote><hr><h2 id="八、行内代码块"><a href="#八、行内代码块" class="headerlink" title="八、行内代码块"></a>八、行内代码块</h2><p>`表示 <code>行内代码块</code></p><hr><h2 id="九、代码块"><a href="#九、代码块" class="headerlink" title="九、代码块"></a>九、代码块</h2><p>使用四个空格缩进表示代码块，一些 IDE 支持行数提示和着色，一般使用三个 ` 表示，例如</p><pre><code>public class HelloWorld{    System.out.println("HELLO WORLD!");}</code></pre><hr><h2 id="十、表格"><a href="#十、表格" class="headerlink" title="十、表格"></a>十、表格</h2><p>直接看例子，第二行的<code>---</code>表示了对齐方式</p><table><thead><tr><th>商品</th><th align="right">数量</th><th align="center">单价</th></tr></thead><tbody><tr><td>苹果</td><td align="right">10</td><td align="center">$1</td></tr><tr><td>电脑</td><td align="right">1</td><td align="center">$100</td></tr></tbody></table><p>W3C标准</p><p>HTML：(Hyper Text Markup Language)超文本标记语言</p><p>Web标准</p><p>常规标记：双标记 &lt;标记&gt;&lt;/标记&gt;</p><p>空标记：单标记 &lt;标记/&gt;</p><p>DOCTYPE：文档声明标签<br><code>&lt;!DOCTYPE html&gt;</code></p><p>html标签:<br><code>&lt;html lang='en'&gt;&lt;/html&gt;</code><br>‘en’:英文; ‘zh-CN’:中文; ‘ja-jp’:日文</p><p>meta标签：<meta charset="***"><br>UTF-8</p><p>Web语义化：</p><ol><li>裸奔好看</li><li>爬虫喜欢</li><li>方便维护</li></ol><p>常用标签:<br>1、文本标签(h1-h6)<br><code>&lt;hn&gt;</code><br>权重h1最重，爬虫理解<br>2、段落标签(p)<br>3、换行(br)<br>4、水平线(hr)  </p><hr>5、加粗标记<p><code>&lt;strong&gt;&lt;/strong&gt;</code></p><p><code>&lt;b&gt;&lt;/b&gt;</code></p><p>6、倾斜标签</p><p><code>&lt;em&gt;&lt;/em&gt;</code></p><p><code>&lt;i&gt;&lt;/i&gt;</code></p><p>7、删除标签</p><p><code>&lt;del&gt;&lt;/del&gt;</code></p><p><code>&lt;s&gt;&lt;/s&gt;</code></p><p>8、扩展</p><p><code>&lt;u&gt;下划线&lt;/u&gt;</code></p><p><code>&lt;sub&gt;下标&lt;/sub&gt;</code></p><p><code>&lt;sup&gt;上标&lt;/sup&gt;</code></p><p>不一般的hr</p><hr color="red" width="300px" align="left"><hr noshade=""><p>特殊符号<br>    &amp;lt &lt;<br>    &amp;gt &gt;<br>    空格<br>        &amp;nbsp 该空格占据宽度受字影响而强烈<br>        &amp;emsp 占据宽度正好是1个中文的宽度，且基本上不受字体影响<br>    版权 &amp;copy ©<br>    商标<br>        &amp;trade ™<br>        &amp;reg</p><p>div：块级元素<br>    没有具体含义，用来划分页面的区域，独占一行</p><p>span：行内元素<br>    没有实际意义，主要用在文本样式修改时候，内容有多宽就占用多宽的空间距离</p><p>列表<br>    有序列表(order list)<br>        ol&gt;li<br>        ol里面可以随意放标签，但是ol里面只能放置li<br>        数字是自动生成的<br>        属性<br>            type:1,a,A,i,I<br>            start:取值只能是一个数字<br>    无序列表(Unordered list)<br>        ul&gt;li<br>        ul里面只能放li，li里面可以放其他标签<br>        默认是黑色的实心圆<br>        属性：<br>            type：disc，circle，square，none<br>    自定义列表<br>        dl&gt;dt|dd</p><p>图片标签的路径<br>    img标签<br>    src<br>        绝对路径是指文件在硬盘上真正存在的路径<br>        相对路径就是相对于自己的目标文件位置</p><p>图片标签的属性<br>    src路径信息<br>    title鼠标悬停上去的提示信息<br>    alt图片加载失败的提示信息<br>    width<br>    height</p><p>超链接标签<br>    实现不同页面的跳转<br>    属性<br>        href:跳转链接<br>        title：鼠标悬浮提示<br>        target：打开方式<br>            _self:默认值，本页面打开<br>            _blank:新窗口打开</p><p>table表格的基本结构<br>     tr:行(table row)<br>     td:列<br>    表格属性<br>        width：宽度<br>        height：高度<br>        border：边框<br>        bordercolor：边框颜色<br>        bgcolor：背景颜色<br>        align：水平对齐<br>        cellspacing：单元格之间的间距<br>        cellpadding：单元格内边距<br>    tr属性(width不生效)<br>        height：高度<br>        bgcolor：背景颜色<br>        align：文字水平对齐<br>        valign：文字垂直对齐<br>    td属性<br>        width：宽度 （影响一整列）<br>        height：高度 （影响一整行）<br>        bgcolor：背景颜色<br>        align：文字水平对齐<br>        valign：文字垂直对齐<br>    表格合并<br>        colspan：合并列数，必须是td<br>        rowspan：合并行数，必须是td<br>    表单标签<br>        form标签<br>            action：传输数据地址<br>            method：方法post、get<br>                get<br>                    是从服务器上获取数据<br>                    把参数数据队列加到提交表单的ACTION所指的URL中，值和表单内字段一一对应，在URL中可以看到。<br>                    Request.QueryString获取<br>                    传输数据量小，不能大于2KB<br>                    安全性低，效率好<br>                post<br>                    是向服务器传送数据<br>                    通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION所指的URL地址，用户看不见整个过程。<br>                    Request.Query获取<br>                    数据量大，最大80KB<br>                    安全性高<br>            input标签<br>                type：<br>                    text:文本框<br>                    submit：提交框<br>                    button：按钮框<br>                    reset：重置框<br>                    password：密码框<br>                placeholder：描述输入字段预期值的简短的提示信息兼容到IE8以上<br>                name：必须设置，后端获取的key值<br>                value：按钮显示值</p><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
     
     
       
@@ -123,6 +77,10 @@
     
     
     
+    <category term="Markdown" scheme="http://example.com/categories/Markdown/"/>
+    
+    
+    <category term="Markdown" scheme="http://example.com/tags/Markdown/"/>
     
   </entry>
   
@@ -131,7 +89,7 @@
     <link href="http://example.com/2022/07/31/html-shu-li/"/>
     <id>http://example.com/2022/07/31/html-shu-li/</id>
     <published>2022-07-31T11:53:23.000Z</published>
-    <updated>2022-09-14T06:47:25.854Z</updated>
+    <updated>2022-09-16T02:46:48.735Z</updated>
     
     <content type="html"><![CDATA[<h1 id="HTML梳理"><a href="#HTML梳理" class="headerlink" title="HTML梳理"></a>HTML梳理</h1><p>HTML 全称：’Hyper Text Markup Language’(超文本标记语言)</p><p>HTML的基本语法：<br>    1.常规标记<br>    2.空标记</p><h2 id="HTML语义化"><a href="#HTML语义化" class="headerlink" title="HTML语义化"></a>HTML语义化</h2><ol><li>样式丢失时还能保持结构</li><li>利于爬虫SEO搜索</li><li>方便阅读维护</li></ol><h2 id="DOCTYPE"><a href="#DOCTYPE" class="headerlink" title="DOCTYPE"></a>DOCTYPE</h2><p>文档声明标签<br><code>&lt;!DOCTYPE html&gt;</code></p><h2 id="html标签"><a href="#html标签" class="headerlink" title="html标签"></a>html标签</h2><p><code>&lt;html lang='en'&gt;&lt;/html&gt;</code><br>‘en’:英文; ‘zh-CN’:中文; ‘ja-jp’:日文</p><h2 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h2><p><code>&lt;meta charset='***'&gt;</code><br>UTF-8</p><h2 id="常用标签"><a href="#常用标签" class="headerlink" title="常用标签"></a>常用标签</h2><ol><li>文本标签 &lt;hn&gt;&lt;/hn&gt;</li><li>段落标签 &lt;p&gt;&lt;/p&gt; </li><li>换行标签 &lt;br/&gt;</li><li>水平线标签 &lt;hr/&gt; <hr></li><li>文字加粗标签<br> &lt;b&gt;&lt;/b&gt; <b>b标签</b><br> &lt;strong&gt;&lt;/strong&gt; <strong>strong标签</strong> </li><li>倾斜标签<br> &lt;em&gt;&lt;/em&gt; <em>em标签</em><br> &lt;i&gt;&lt;/i&gt; <i>i标签</i> </li><li>删除线标签<br> &lt;s&gt;&lt;/s&gt; <s>s标签</s><br> &lt;del&gt;&lt;/del&gt; <del>del标签</del> </li><li>扩展<br> &lt;u&gt;&lt;/u&gt; <u>下划线</u><br> &lt;sup&gt;&lt;/sup&gt; <sup>上标</sup><br> &lt;sub&gt;&lt;/sub&gt; <sub>下标</sub></li></ol><h2 id="特殊符号"><a href="#特殊符号" class="headerlink" title="特殊符号"></a>特殊符号</h2><pre><code>&amp;lt;   :  &lt;&amp;gt;   :  &gt;&amp;nbsp; :  空格 宽度受字体影响&amp;emsp; :  空格 宽度为一个中文的宽度&amp;copy; :  版权&amp;trade :  商标&amp;reg;  :  商标</code></pre><h2 id="div和span"><a href="#div和span" class="headerlink" title="div和span"></a>div和span</h2><pre><code>div：块级元素    没有具体含义，用来划分页面的区域，独占一行span：行内元素    没有实际意义，主要用在文本样式修改时候，内容有多宽就占用多宽的空间距离</code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><pre><code>有序列表(order list)    ol&gt;li    ol里面可以随意放标签，但是ol里面只能放置li    数字是自动生成的    属性        type:1,a,A,i,I        start:取值只能是一个数字无序列表(Unordered list)    ul&gt;li    ul里面只能放li，li里面可以放其他标签    默认是黑色的实心圆    属性：        type：disc，circle，square，none自定义列表    dl&gt;dt|dd</code></pre><h2 id="图片标签的路径"><a href="#图片标签的路径" class="headerlink" title="图片标签的路径"></a>图片标签的路径</h2><pre><code>img标签src    绝对路径是指文件在硬盘上真正存在的路径    相对路径就是相对于自己的目标文件位置</code></pre><h2 id="图片标签的属性"><a href="#图片标签的属性" class="headerlink" title="图片标签的属性"></a>图片标签的属性</h2><pre><code>src：路径信息title：鼠标悬停上去的提示信息alt：图片加载失败的提示信息width：宽度height：高度</code></pre><h2 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h2><pre><code>实现不同页面的跳转属性    href:跳转链接    title：鼠标悬浮提示    target：打开方式        _self:默认值，本页面打开        _blank:新窗口打开</code></pre><h2 id="table表格的基本结构"><a href="#table表格的基本结构" class="headerlink" title="table表格的基本结构"></a>table表格的基本结构</h2><pre><code> tr:行(table row) td:列表格属性    width：宽度    height：高度    border：边框    bordercolor：边框颜色    bgcolor：背景颜色    align：水平对齐    cellspacing：单元格之间的间距    cellpadding：单元格内边距tr属性(width不生效)    height：高度    bgcolor：背景颜色    align：文字水平对齐    valign：文字垂直对齐td属性    width：宽度 （影响一整列）    height：高度 （影响一整行）    bgcolor：背景颜色    align：文字水平对齐    valign：文字垂直对齐表格合并    colspan：合并列数，必须是td    rowspan：合并行数，必须是td表单标签    form标签        action：传输数据地址        method：方法post、get            get                是从服务器上获取数据                把参数数据队列加到提交表单的ACTION所指的URL中，值和表单内字段一一对应，在URL中可以看到。                Request.QueryString获取                传输数据量小，不能大于2KB                安全性低，效率好            post                是向服务器传送数据                通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION所指的URL地址，用户看不见整个过程。                Request.Query获取                数据量大，最大80KB                安全性高        input标签            type：                text:文本框                submit：提交框                button：按钮框                reset：重置框                password：密码框            placeholder：描述输入字段预期值的简短的提示信息兼容到IE8以上            name：必须设置，后端获取的key值            value：按钮显示值</code></pre><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
     
@@ -144,6 +102,36 @@
     
     
     
+    <category term="HTML" scheme="http://example.com/categories/HTML/"/>
+    
+    
+    <category term="HTML" scheme="http://example.com/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS梳理</title>
+    <link href="http://example.com/2022/07/31/css-shu-li/"/>
+    <id>http://example.com/2022/07/31/css-shu-li/</id>
+    <published>2022-07-31T11:53:23.000Z</published>
+    <updated>2022-09-17T08:47:26.948Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CSS：层叠样式表"><a href="#CSS：层叠样式表" class="headerlink" title="CSS：层叠样式表"></a>CSS：层叠样式表</h1><pre><code>由选择符和声明组成</code></pre><h2 id="样式引入"><a href="#样式引入" class="headerlink" title="样式引入"></a>样式引入</h2><pre><code>内部样式：&lt;style&gt;&lt;/style&gt;标签，一般在head标签内    副作用：外部样式：(结构样式分离，推荐使用)    link标签：        rel：'stylesheet'        type：'text/css'        href：路径        区别：            属于XHTML标签            link引用的CSS会同时被加载    style标签：        @import url("路径")        区别：            CSS提供的一种方式            全部下载完再被加载            出来的时间有点老，只在IE5以上才能识别行内样式：    style作为属性直接写在标签后面样式优先级(就近原则)    内联样式最优先；外部和内部一样，看谁覆盖，一般先写外部再写内部    ！important：开挂加权重</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>标签选择器（element选择器）    eg：div{属性名：属性值}    以文档语言对象作为选择器，即使用结构总中元素名称作为选择符类选择器    eg：.class名{属性：属性值}    &lt;style&gt;        a{            color:red        }        b{            color:yellow        }    &lt;/style&gt;    &lt;div class="a b"&gt;&lt;/div&gt;    标签里的属性可设置多个，样式优先级看style里的属性位置id选择器    #id名{属性：属性值}    唯一性通配符选择器    *{属性：属性值}    一般用来格式化内外边距群组选择器    , 合并选择器，节约代码量后代选择器    空格伪类选择器    :link{属性：属性值} 初始状态    :visited{属性：属性值} 被访问后状态    :hover{属性：属性值} 鼠标悬浮状态    :active{属性：属性值} 激活时状态，即鼠标按下状态    书写顺序：link-visited-hover-active选择器的权重    !important      10000    内联            1000    id              100    class           10    元素(标签)       1    包含选择符      权重之和比较，但不会越级规则    当不同选择符的样式设置有冲突的时候，高权重选择符的样式会覆盖低权重选择符的样式    相同权重的选择符，样式遵循就近原则：那个选择符最后定义，就采用那个选择符样式</code></pre><h2 id="文本属性：font"><a href="#文本属性：font" class="headerlink" title="文本属性：font"></a>文本属性：font</h2><pre><code>    font-size：字体大小;单位是px，浏览器默认是16px，设计图常用字号是12px    font-family：字体;    color:字体颜色    font-weight：加粗    font-style：倾斜 italic(倾斜)/oblique(倾斜的字体)/normal（正常）    text-align：文本水平对齐        left        right        center        justify    line-height：行高    text-indent:首行缩进，只对第一行起作用    letter-spacing：字间距    word-spacing:词间距    text-decoration：文本修饰    text-transform：文本大小写转换    font：文字简写        #font-style  #font-weight font-size/line-height font-family（加#可省略）</code></pre><h2 id="列表属性：list-style"><a href="#列表属性：list-style" class="headerlink" title="列表属性：list-style"></a>列表属性：list-style</h2><pre><code>list-style-type：定义列表符合样式    disc，circle，square，nonelist-style-image：将图片设置为列表符合样式    url();list-style-position：设置列表项放置位置是否在li标签内    outside    insidelist-style：简写      list-style-type list-style-image  list-style-position;顺序无所谓</code></pre><h2 id="背景属性：background"><a href="#背景属性：background" class="headerlink" title="背景属性：background"></a>背景属性：background</h2><pre><code>background-color：背景颜色background-image：背景图片    url()background-repeat：背景图片的平铺    repeat/norepeat/repeat-x/repeat-ybackground-position：背景图片的定位    上 右background-size：图片大小    cover把背景图形扩展至足够大，以使背景图形完全覆盖背景区域，有可能会裁掉一部分    contain：把图像等比例放置最大background-attachment：背景图片的固定方式   一般用于视觉差    fixed：相对于浏览器视口固定    scroll：相对于网页整体固定background:color image repeat position attachment;顺序无所谓，可单独设置某一个值</code></pre><h2 id="浮动属性：float"><a href="#浮动属性：float" class="headerlink" title="浮动属性：float"></a>浮动属性：float</h2><pre><code>属性    left    right    none作用    定义网页中其他文本如何环绕该元素显示    就是让竖着的东西横着来    脱离默认文档流    见缝插针副作用    高度塌陷：由于子元素脱离默认文档流而撑不起来父元素解决方案：    1. 父元素写死宽高    2. overflow：hidden        引发BFC，让浮动元素重新计算高度    3. 清除浮动        设置于浮动元素之后        clear：none/both/left/right</code></pre><h2 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h2><pre><code>W3C盒模型    上下左右    上下 左右    上 左右 下    上 右 下 左    内边距        padding        不支持负数    边框        border            border-width            border-color            border-style    外边距        margin        支持负数        子盒子不知道父元素的边距        1.子元素的margin给父盒子的padding，注意高度计算        2.给父元素设置边框        3.加浮动，父子加皆可        4.overflow：hidden BFC</code></pre><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;CSS：层叠样式表&quot;&gt;&lt;a href=&quot;#CSS：层叠样式表&quot; class=&quot;headerlink&quot; title=&quot;CSS：层叠样式表&quot;&gt;&lt;/a&gt;CSS：层叠样式表&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;由选择符和声明组成
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;样式</summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="http://example.com/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="http://example.com/tags/CSS/"/>
     
   </entry>
   
@@ -152,7 +140,7 @@
     <link href="http://example.com/2022/07/18/promise/"/>
     <id>http://example.com/2022/07/18/promise/</id>
     <published>2022-07-18T04:34:08.000Z</published>
-    <updated>2022-07-31T11:49:32.809Z</updated>
+    <updated>2022-09-16T02:48:31.728Z</updated>
     
     <content type="html"><![CDATA[<blockquote class="pullquote mindmap mindmap-md 100"><ul><li><a href="https://hunterx.xyz/use-mindmap-in-hexo.html">在 Hexo 中使用思维导图</a><ul><li>前言</li><li>操作指南<ul><li>准备需要的文件</li><li>为主题添加 CSS/JS 文件</li></ul></li><li>使用方法</li></ul></li></ul></blockquote><script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">]]></content>
     
@@ -167,29 +155,7 @@
     
     
     
-    <category term="八股文" scheme="http://example.com/tags/%E5%85%AB%E8%82%A1%E6%96%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2022/07/18/hello-world/"/>
-    <id>http://example.com/2022/07/18/hello-world/</id>
-    <published>2022-07-18T03:27:36.854Z</published>
-    <updated>2022-07-18T04:32:16.725Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
-      
-    
-    
-    
-    
-    <category term="八股文" scheme="http://example.com/tags/%E5%85%AB%E8%82%A1%E6%96%87/"/>
+    <category term="JS" scheme="http://example.com/tags/JS/"/>
     
   </entry>
   
