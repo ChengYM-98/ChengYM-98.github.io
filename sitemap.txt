@@ -1,3 +1,4 @@
+http://example.com/2022/08/30/04-js-shu-li/
 http://example.com/tags/index.html
 http://example.com/about/index.html
 http://example.com/2022/11/12/14-pai-xu-suan-fa/
@@ -13,7 +14,6 @@ http://example.com/2022/08/01/02-html-shu-li/
 http://example.com/contact/index.html
 http://example.com/categories/index.html
 http://example.com/2022/09/01/05-shu-ju-jie-gou/
-http://example.com/2022/08/30/04-js-shu-li/
 http://example.com/2022/08/10/03-css-shu-li/
 http://example.com/2022/07/31/01-markdown/
 http://example.com/
