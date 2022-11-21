@@ -1,0 +1,255 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>react源码解析 | 兴趣使然的博客</title><meta name="author" content="ChengYM"><meta name="copyright" content="ChengYM"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="React核心React 是一个网页UI框架,通过组件化的方式解决视图层开发复用的问题，本质是一个组件化框架。  他的核心设计思路有三点，分别是声明式、组件化与通用性  声明式的优势在于直观与组合  组件化的优势在于视图的拆分与模块复用，可以更容易做到高内聚低耦合  通用性在于一次学习，随处编写，将DOM抽象为虚拟DOM，开发者并不会直接操作DOM使得React不再局限于Web开发，适用范围广">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react源码解析">
+<meta property="og:url" content="http://example.com/2022/11/05/10-react-yuan-ma-jie-xi/index.html">
+<meta property="og:site_name" content="兴趣使然的博客">
+<meta property="og:description" content="React核心React 是一个网页UI框架,通过组件化的方式解决视图层开发复用的问题，本质是一个组件化框架。  他的核心设计思路有三点，分别是声明式、组件化与通用性  声明式的优势在于直观与组合  组件化的优势在于视图的拆分与模块复用，可以更容易做到高内聚低耦合  通用性在于一次学习，随处编写，将DOM抽象为虚拟DOM，开发者并不会直接操作DOM使得React不再局限于Web开发，适用范围广">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/05.jpg">
+<meta property="article:published_time" content="2022-11-05T08:14:36.000Z">
+<meta property="article:modified_time" content="2022-11-21T16:31:32.936Z">
+<meta property="article:author" content="ChengYM">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/05.jpg"><link rel="shortcut icon" href="/img/faviconC.png"><link rel="canonical" href="http://example.com/2022/11/05/10-react-yuan-ma-jie-xi/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'react源码解析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-22 00:31:32'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="兴趣使然的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/05.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">兴趣使然的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">react源码解析</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-05T08:14:36.000Z" title="发表于 2022-11-05 16:14:36">2022-11-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-21T16:31:32.936Z" title="更新于 2022-11-22 00:31:32">2022-11-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">前端进阶</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="react源码解析"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="React核心"><a href="#React核心" class="headerlink" title="React核心"></a>React核心</h1><pre><code>React 是一个网页UI框架,通过组件化的方式解决视图层开发复用的问题，本质是一个组件化框架。
+
+他的核心设计思路有三点，分别是声明式、组件化与通用性
+
+声明式的优势在于直观与组合
+
+组件化的优势在于视图的拆分与模块复用，可以更容易做到高内聚低耦合
+
+通用性在于一次学习，随处编写，将DOM抽象为虚拟DOM，开发者并不会直接操作DOM使得React不再局限于Web开发，适用范围广
+</code></pre>
+<p>劣势：技术选型和学习使用上造成了一定的成本。</p>
+<h1 id="React-特色"><a href="#React-特色" class="headerlink" title="React 特色"></a>React 特色</h1><ol>
+<li>React 是一个纯粹的 ui 框架，ui=fn(x),通过 state 映射 ui 来屏蔽掉 dom 操作</li>
+<li>React 的核心 API 是 setState，所有的内容都是围绕组件化进行，没有 direvtive 双向绑定和其他 API</li>
+<li>思想超前，React16 引入 fiber 概念，从根本上解决 js 单线程运行计算量大导致动画或 ui 卡顿</li>
+</ol>
+<h1 id="ReactFiber"><a href="#ReactFiber" class="headerlink" title="ReactFiber"></a>ReactFiber</h1><h2 id="currentFiber与workInProgressFiber"><a href="#currentFiber与workInProgressFiber" class="headerlink" title="currentFiber与workInProgressFiber"></a>currentFiber与workInProgressFiber</h2><p> 当前被刷新用来渲染用户界面的树，被称为 current，它用来渲染当前用户界面。每当有更新时，Fiber 会建立一个 workInProgress 树，它是由 React 元素中已经更新数据创建的。React 在这个 workInProgress 树上执行工作，并在下次渲染时使用这个更新的树。一旦这个 workInProgress 树被渲染到用户界面上，它就成为 current 树。</p>
+<p>Fiber 树的遍历是这样发生的。</p>
+<pre><code>开始：Fiber 从最上面的 React 元素开始遍历，并为其创建一个 fiber 节点。
+子节点：然后，它转到子元素，为这个元素创建一个 fiber 节点。这样继续下去，直到到达叶子元素。
+兄弟节点： 现在，它检查是否有兄弟节点元素。如果有，它就遍历兄弟节点元素，然后再到兄弟姐妹的叶子元素。
+返回：如果没有兄弟节点，那么它就返回到父节点。
+每个 fiber 都有一个子属性（如果没有子属性，则为空值）、兄弟和父节点属性（正如你在前面的章节中看到的 fiber 的结构）。这些是 fiber 中的指针，可以作为一个链表来工作。
+</code></pre>
+<p>让我们举同样的例子，我们先给特定 React 元素的 fiber 命名。</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// App</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"wrapper"</span><span class="token operator">></span>
+      <span class="token punctuation">{</span><span class="token string">" "</span><span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">// W&lt;div className="list"></span>
+        <span class="token punctuation">{</span><span class="token string">" "</span><span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// L&lt;div className="list_item">List item A&lt;/div> // LA</span>
+        <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"list_item"</span><span class="token operator">></span>List item B<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span> <span class="token comment" spellcheck="true">// LB</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+      <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"section"</span><span class="token operator">></span>
+        <span class="token punctuation">{</span><span class="token string">" "</span><span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// S&lt;button>Add&lt;/button> // SB</span>
+        <span class="token operator">&lt;</span>span<span class="token operator">></span>No<span class="token punctuation">.</span> <span class="token keyword">of</span> items<span class="token punctuation">:</span> <span class="token number">2</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span> <span class="token comment" spellcheck="true">// SS</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>ReactDOM.render(<app>, document.getElementById(“root”)); // HostRoot<br>首先，我们将快速介绍创建树时的挂载阶段，之后，我们将了解树更新后详细逻辑。</app></p>
+<h2 id="初始渲染"><a href="#初始渲染" class="headerlink" title="初始渲染"></a>初始渲染</h2><pre><code>App 组件被渲染在 root div 中，它的 id 是 root。
+
+在进一步遍历之前，React Fiber 创建一个根 fiber 。每个 fiber 树都有一个根节点。在我们这里，它是 HostRoot。如果我们在 DOM 中导入多个 React 应用，可以有多个根节点。
+
+在第一次渲染之前，不会有任何树。React Fiber 遍历每个组件的渲染函数的输出，并为每个 React 元素在树上创建一个 fiber 节点。 它用 createFiberFromTypeAndProps 来将 React 元素转换为 fiber 。React 元素可以是一个类组件，也可以是一个宿主组件，如 div 或 span。对于类组件，它创建一个实例，而对于宿主组件，它从 React 元素中获得数据和 props。
+
+因此，正如例子中所示，它创建了一个 fiber App。再往前走，它又创建了一个 fiber ，W，然后它转到子 div 并创建了一个 fiber L，如此下去，它为它的子代创建了一个 fiber ，LA 和 LB。 fiber ，LA，将有返回（在这种情况下也可以被称为父级） fiber 作为 L，和兄弟姐妹作为 LB。
+</code></pre>
+<p><img src="/img/loading.gif" data-original="/img/Fiber1.png" alt="Fiber 节点链接图">  </p>
+<h2 id="更新阶段"><a href="#更新阶段" class="headerlink" title="更新阶段"></a>更新阶段</h2><pre><code>现在，让我们来谈谈第二种情况，例如由于 setState 而导致的更新。
+
+所以，在这个时候，Fiber 已经有了 current tree。对于每次更新，它都会建立一个 workInProgress 树。它从根 fiber 开始，遍历该树，直到叶子节点。与初始渲染阶段不同，它不会为每个 React 元素创建一个新的 fiber 。它只是为该 React 元素使用预先存在的 fiber ，并在更新阶段合并来自更新元素的新数据和 props。
+
+早些时候，在 React 15 中，堆栈协调器是同步的。所以，一个更新会递归地遍历整个树，并制作一个树的副本。假设在这之间，如果有其他的更新比它的优先级更高，那么就没有机会中止或暂停第一个更新并执行第二个更新。
+
+React Fiber 将更新划分为工作单元。它可以为每个工作单元分配优先级，并有能力暂停、重用或在不需要时中止工作单元。 React Fiber 将工作分为多个工作单位，也就是 fiber 。它将工作安排在多个框架中，并使用来自 requestIdleCallback 的 deadline 。每个更新都有其优先级的定义，如动画，或用户输入的优先级高于从获取的数据中渲染项目的列表。Fiber 使用 requestAnimationFrame 来处理优先级较高的更新，使用 requestIdleCallback 处理优先级较低的更新。因此，在调度工作时，Fiber 检查当前更新的优先级和 deadline （帧结束后的自由时间）。
+
+如果优先级高于待处理的工作，或者没有 截止日期 或者截止日期尚未到达，Fiber 可以在一帧之后安排多个工作单元。而下一组工作单元会被带到更多的帧上。这就是使 Fiber 有可能暂停、重用和中止工作单元的原因。
+
+那么，让我们看看在预定的工作中实际发生了什么。有两个阶段来完成工作。render 和 commit。
+</code></pre>
+<h2 id="渲染阶段"><a href="#渲染阶段" class="headerlink" title="渲染阶段"></a>渲染阶段</h2><pre><code>实际的树形遍历和 deadline 的使用发生在这个阶段。这是 Fiber 的内部逻辑，所以在这个阶段对 Fiber 树所做的改变对用户来说是不可见的。因此，Fiber 可以暂停、中止或分担多个框架的工作。
+
+我们可以把这个阶段称为协调阶段。 fiber 从 fiber 树的根部开始遍历，处理每个 fiber 。每一个工作单位都会调用workLoop 函数来执行工作。我们可以把这个工作的处理分成两个步骤。begin 和 complete 。
+</code></pre>
+<h2 id="开始阶段"><a href="#开始阶段" class="headerlink" title="开始阶段"></a>开始阶段</h2><pre><code>如果你从 React 代码库中找到 workLoop 函数，它就会调用 performUnitOfWork，它把 nextUnitOfWork 作为一个参数，它就只是个工作的单位，将被执行。 performUnitOfWork 函数内部调用 beginWork 函数。这是 fiber 上发生实际工作的地方，而 performUnitOfWork 只是发生迭代的地方。
+
+在 beginWork 函数中，如果 fiber 没有任何待处理的工作，它就会直接跳出（跳过） fiber 而不进入开始阶段。这就是在遍历大树时， fiber 跳过已经处理过的 fiber ，直接跳到有待处理工作的 fiber 。如果你看到大的 beginWork 函数代码块，我们会发现一个开关块，根据 fiber 标签，调用相应的 fiber 更新函数。就像 updateHostComponent 用于宿主组件。这些函数会更新 fiber 。
+
+如果有子 fiber ，beginWork函数返回子 fiber ，如果没有子 fiber 则返回空。函数 performUnitOfWork 持续迭代并调用子 fiber ，直到叶节点到达。在叶子节点的情况下，beginWork 返回 null，因为没有任何子节点，performUnitOfWork 函数调用 completeUnitOfWork 函数。现在让我们看看完善阶段。
+</code></pre>
+<h2 id="完善阶段"><a href="#完善阶段" class="headerlink" title="完善阶段"></a>完善阶段</h2><pre><code>这个 completeUnitOfWork 函数通过调用一个 completeWork 函数来完成当前单位的工作。如果有的话，completeUnitOfWork 会返回一个同级的 fiber 来执行下一个工作单元，如果没有工作的话，则会完成 return(parent) fiber 。这将一直持续到返回值为空，也就是说，直到它到达根节点。和 beginWork 一样，completeWork 也是一个发生实际工作的函数，而 completeUnitOfWork 是用于迭代的。
+
+渲染阶段的结果会产生一个效果列表（副作用）。这些效果就像插入、更新或删除宿主组件的节点，或调用类组件节点的生命周期方法。这些 fiber 被标记为各自的效果标签。
+
+在渲染阶段之后，Fiber 将准备提交更新。
+</code></pre>
+<h2 id="提交阶段"><a href="#提交阶段" class="headerlink" title="提交阶段"></a>提交阶段</h2><pre><code>这是一个阶段，完成的工作将被用来在用户界面上渲染它。由于这一阶段的结果对用户来说是可见的，所以不能被分成部分渲染。这个阶段是一个同步的阶段。
+
+在这个阶段的开始，Fiber 有已经在 UI 上渲染的 current 树，finishedWork，或者在渲染阶段建立的 workInProgress 树和效果列表。
+
+effect 列表是 fiber 的链表，它有副作用。所以，它是渲染阶段的 workInProgress 树的节点的一个子集，它有副作用（更新）。effect 列表的节点是用 nextEffect 指针链接的。
+
+在这个阶段调用的函数是 completeRoot。
+
+在这里，workInProgress 树成为 current 树，因为它被用来渲染 UI。实际的 DOM 更新，如插入、更新、删除，以及对生命周期方法的调用或者更新相对应的引用 —— 发生在 effect 列表中的节点上。
+
+这就是 fiber 协调器的工作方式。
+</code></pre>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ChengYM</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/11/05/10-react-yuan-ma-jie-xi/">http://example.com/2022/11/05/10-react-yuan-ma-jie-xi/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">兴趣使然的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/React/">React</a></div><div class="post_share"><div class="social-share" data-image="/img/05.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/11/07/11-seo-you-hua-hui-zong/"><img class="prev-cover" src="/img/loading.gif" data-original="/img/01.jpg" onerror="onerror=null;src='/img/lazyload.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SEO优化</div></div></a></div><div class="next-post pull-right"><a href="/2022/10/14/09-liu-lan-qi-jie-xi-guo-cheng/"><img class="next-cover" src="/img/loading.gif" data-original="/img/04.jpg" onerror="onerror=null;src='/img/lazyload.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">浏览器解析过程</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengYM</div><div class="author-info__description">你必须非常努力,才能看起来毫不费力</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ChengYM-98"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">兴趣使然的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#React%E6%A0%B8%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">React核心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#React-%E7%89%B9%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">React 特色</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ReactFiber"><span class="toc-number">3.</span> <span class="toc-text">ReactFiber</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#currentFiber%E4%B8%8EworkInProgressFiber"><span class="toc-number">3.1.</span> <span class="toc-text">currentFiber与workInProgressFiber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E6%B8%B2%E6%9F%93"><span class="toc-number">3.2.</span> <span class="toc-text">初始渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E9%98%B6%E6%AE%B5"><span class="toc-number">3.3.</span> <span class="toc-text">更新阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E9%98%B6%E6%AE%B5"><span class="toc-number">3.4.</span> <span class="toc-text">渲染阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E9%98%B6%E6%AE%B5"><span class="toc-number">3.5.</span> <span class="toc-text">开始阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E5%96%84%E9%98%B6%E6%AE%B5"><span class="toc-number">3.6.</span> <span class="toc-text">完善阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E9%98%B6%E6%AE%B5"><span class="toc-number">3.7.</span> <span class="toc-text">提交阶段</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer"><img src="/img/loading.gif" data-original="/img/05.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="LeetCode-剑指Offer"/></a><div class="content"><a class="title" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer">LeetCode-剑指Offer</a><time datetime="2022-11-20T06:01:02.000Z" title="发表于 2022-11-20 14:01:02">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法"><img src="/img/loading.gif" data-original="/img/04.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法">排序算法</a><time datetime="2022-11-12T08:33:19.000Z" title="发表于 2022-11-12 16:33:19">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/13-ts/" title="TS"><img src="/img/loading.gif" data-original="/img/03.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="TS"/></a><div class="content"><a class="title" href="/2022/11/12/13-ts/" title="TS">TS</a><time datetime="2022-11-12T03:37:26.000Z" title="发表于 2022-11-12 11:37:26">2022-11-12</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/11/12-gong-zuo-zong-jie/" title="工作总结"><img src="/img/loading.gif" data-original="/img/02.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="工作总结"/></a><div class="content"><a class="title" href="/2022/11/11/12-gong-zuo-zong-jie/" title="工作总结">工作总结</a><time datetime="2022-11-11T12:10:30.000Z" title="发表于 2022-11-11 20:10:30">2022-11-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/07/11-seo-you-hua-hui-zong/" title="SEO优化"><img src="/img/loading.gif" data-original="/img/01.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="SEO优化"/></a><div class="content"><a class="title" href="/2022/11/07/11-seo-you-hua-hui-zong/" title="SEO优化">SEO优化</a><time datetime="2022-11-07T07:37:35.000Z" title="发表于 2022-11-07 15:37:35">2022-11-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By ChengYM</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script></body></html>
