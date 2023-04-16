@@ -1041,7 +1041,7 @@ var isSymmetric = function(root) {
 
 
 
-## 32： I. 从上到下打印二叉树
+## 32-I. 从上到下打印二叉树
 ```js
 // 方法 1: Python 列表+for 循环
 // 方法 2: 双端队列+while 循环
@@ -1065,7 +1065,7 @@ var levelOrder = function(root) {
 
 
 
-## 32： II. 从上到下打印二叉树 II
+## 32-II. 从上到下打印二叉树 II
 ```js
 // 按层 BFS, 记录当前层长度 curlen
 var levelOrder = function(root) {
@@ -1095,7 +1095,7 @@ var levelOrder = function(root) {
 ```
 
 
-## 32： III. 从上到下打印二叉树 III
+## 32-III. 从上到下打印二叉树 III
 ```js
 // 按层 BFS+方向 flag
 var levelOrder = function(root) {
@@ -1733,26 +1733,27 @@ var maxValue = function(grid) {
 ```js
 // 动态规划+空间优化, dp 存当前骰子数下面的所有可能取值的概率, 推导出骰子数+1 的所有概率
 const dicesProbability = function (n) {
-  let f = new Array(n + 1).fill(0).map(i => new Array(6 * n + 1).fill(0))
-  f[0][0] = 1
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= i * 6; j++) {
-      // 防止 j - k 小于0溢出了
-      for (let k = 1; k <= Math.min(j,6); k++) {
-        f[i][j] += f[i - 1][j - k]
-      }
+    let f = new Array(n + 1).fill(0).map(i => new Array(6 * n + 1).fill(0));
+    // f[n][s],代表第n个骰子拼出点数为S的方案数
+    f[0][0] = 1;
+    for (let i = 1; i <= n; i++) {
+        for (let j = 1; j <= i * 6; j++) {
+            // 防止 j - k 小于0溢出了
+            for (let k = 1; k <= Math.min(j, 6); k++) {
+                f[i][j] += f[i - 1][j - k];
+            }
+        }
     }
-  }
-  let res = f[n].slice(n)
-  let sum = res.reduce((p,c) => p + c,0)
-  return res.map(v => v / sum)
+    let res = f[n].slice(n);
+    let sum = res.reduce((p, c) => p + c, 0);
+    return res.map(v => v / sum);
 };
 ```
 
 
 ## 62：圆圈中最后剩下的数字
 ```js
-// 动态规划+空间优化, 反推, dp[n, m] = (dp[n-1,m]+m)%n, 遍历[2,n], 注意推导过程
+// 直接模拟实现,遗憾超时
 var lastRemaining = function(n, m) {
   const arr = Array(n)
     .fill(0)
@@ -1760,14 +1761,21 @@ var lastRemaining = function(n, m) {
   let start = 0;
   while (n > 1) {
     const index = (start + m - 1) % n;
-
     n--;
-
     start = index + 1 > n ? 0 : index;
-
     arr.splice(index, 1);
   }
   return arr[0];
+};
+
+// 动态规划+空间优化, 反推, dp[n, m] = (dp[n-1,m]+m)%n, 遍历[2,n], 注意推导过程
+var lastRemaining = function (n, m) {
+  // base case 最终活下来那个人的初始位置 当i为1时，当然是索引0啦
+  let pos = 0;
+  for (let i = 2; i <= n; i++) {
+    pos = (pos + m) % i;
+  }
+  return pos;
 };
 ```
 
