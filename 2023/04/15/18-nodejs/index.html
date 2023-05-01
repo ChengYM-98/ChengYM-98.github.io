@@ -1,0 +1,472 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>NodeJS | 兴趣使然的博客</title><meta name="author" content="ChengYM"><meta name="copyright" content="ChengYM"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="NodeJS 概念Node.js 是一个开源的，跨平台的 JS 运行环境  NodeJs 中并没有 BOM、DOM，可以使用 console 和定时器 API NodeJs 中的顶级对象未 global，也可以用 globalThis 访问顶级对象  Buffer(缓冲器)概念  Buffer 是一个类似于数组的对象，用于表示固定长度的字节序列。 Buffer 本质是一段内存空间，专门用来处理二进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS">
+<meta property="og:url" content="http://example.com/2023/04/15/18-nodejs/index.html">
+<meta property="og:site_name" content="兴趣使然的博客">
+<meta property="og:description" content="NodeJS 概念Node.js 是一个开源的，跨平台的 JS 运行环境  NodeJs 中并没有 BOM、DOM，可以使用 console 和定时器 API NodeJs 中的顶级对象未 global，也可以用 globalThis 访问顶级对象  Buffer(缓冲器)概念  Buffer 是一个类似于数组的对象，用于表示固定长度的字节序列。 Buffer 本质是一段内存空间，专门用来处理二进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/03.jpg">
+<meta property="article:published_time" content="2023-04-15T01:27:02.000Z">
+<meta property="article:modified_time" content="2023-05-01T15:06:49.984Z">
+<meta property="article:author" content="ChengYM">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/03.jpg"><link rel="shortcut icon" href="/img/faviconC.png"><link rel="canonical" href="http://example.com/2023/04/15/18-nodejs/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NodeJS',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-01 23:06:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="兴趣使然的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/03.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">兴趣使然的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">NodeJS</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-15T01:27:02.000Z" title="发表于 2023-04-15 09:27:02">2023-04-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-01T15:06:49.984Z" title="更新于 2023-05-01 23:06:49">2023-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">前端进阶</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="NodeJS"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="NodeJS-概念"><a href="#NodeJS-概念" class="headerlink" title="NodeJS 概念"></a><strong>NodeJS 概念</strong></h2><p>Node.js 是一个开源的，跨平台的 JS 运行环境</p>
+<ul>
+<li>NodeJs 中并没有 BOM、DOM，可以使用 console 和定时器 API</li>
+<li>NodeJs 中的顶级对象未 global，也可以用 globalThis 访问顶级对象</li>
+</ul>
+<h2 id="Buffer-缓冲器"><a href="#Buffer-缓冲器" class="headerlink" title="Buffer(缓冲器)"></a><strong>Buffer(缓冲器)</strong></h2><p><strong>概念</strong></p>
+<ul>
+<li>Buffer 是一个类似于数组的对象，用于表示固定长度的字节序列。</li>
+<li>Buffer 本质是一段内存空间，专门用来处理二进制数据。</li>
+</ul>
+<p><strong>特点</strong></p>
+<ul>
+<li>Buffer 大小固定且无法调整</li>
+<li>Buffer 性能较好，也可以直接对计算机内存进行操作</li>
+<li>每个元素的大小为 1 字节(byte)</li>
+</ul>
+<p><strong>使用</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 1.alloc 会进行归零操作</span>
+<span class="token keyword">let</span> buf <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 2.allocUnsafe 不会归零，可能引入脏数据</span>
+<span class="token keyword">let</span> buf_2 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">allocUnsafe</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 3.from</span>
+<span class="token keyword">let</span> buf_3 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> buf_4 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">105</span><span class="token punctuation">,</span> <span class="token number">104</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Buffer与字符串的转换，我们可以借助toString方法将Buffer转换为字符串</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf_3<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// utf-8</span>
+<span class="token comment" spellcheck="true">// Buffer的读写</span>
+<span class="token keyword">let</span> buf_5 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf_5<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+buf_5<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">95</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 溢出，舍弃高于8位的二进制数字</span>
+buf_5<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">361</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf_5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 中文</span>
+<span class="token keyword">let</span> buf_6 <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token keyword">from</span><span class="token punctuation">(</span><span class="token string">"你好"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>buf_6<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="进程与线程"><a href="#进程与线程" class="headerlink" title="进程与线程"></a><strong>进程与线程</strong></h2><ul>
+<li>进程是程序的一次执行过程，一个进程至少包含一个线程</li>
+<li>线程是一个进程中执行的一个执行流，一个线程是属于某个进程的</li>
+</ul>
+<h2 id="fs-模块"><a href="#fs-模块" class="headerlink" title="fs 模块"></a><strong>fs 模块</strong></h2><p>fs 模块可以实现与硬盘的交互，例如文件的创建、删除、重命名、移动，还有文件内容的写入、读取，以及文件夹的相关操作。</p>
+<p><strong>writeFile</strong><br><code>fs.writeFile(file,data[,options],callback)</code><br>参数说明：</p>
+<ul>
+<li>file 文件名</li>
+<li>data 待写入数据</li>
+<li>options 选项设置</li>
+<li>callback 写入回调<br>返回值：undefined</li>
+</ul>
+<p>代码示例：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * 需求：
+ * 新建一个文件，座右铭.txt，写入内容，三人行，则必有我师焉
+ */</span>
+
+<span class="token comment" spellcheck="true">// 1.导入 fs 模块</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2.写入文件</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span><span class="token string">"./座右铭.txt"</span><span class="token punctuation">,</span> <span class="token string">"三人行，则必有我师焉"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// err 写入失败：错误对象 写入成功：null</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"写入成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.同步写入</span>
+fs<span class="token punctuation">.</span><span class="token function">writeFileSync</span><span class="token punctuation">(</span><span class="token string">"./data.txt"</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>appendFile/appendFileSync 追加写入</strong><br>appendFile 作用是在文件尾部追加内容。appendFile 语法与 writeFile 语法完全相同<br>语法：<br><code>fs.appendFile(file,data[,options],callback)</code><br><code>fs.appendFileSync(file,data[,options])</code><br>返回值：二者都为 undefined<br>代码示例：</p>
+<pre class=" language-javascript"><code class="language-javascript">fs<span class="token punctuation">.</span><span class="token function">appendFile</span><span class="token punctuation">(</span><span class="token string">"./座右铭.txt"</span><span class="token punctuation">,</span> <span class="token string">"择其善者而从之，其不善者而改之。"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> status<span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"追加成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+fs<span class="token punctuation">.</span><span class="token function">appendFileSync</span><span class="token punctuation">(</span><span class="token string">"./座右铭.txt"</span><span class="token punctuation">,</span> <span class="token string">"\r\n温故而知新，可以为师矣"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token function">writeFile</span><span class="token punctuation">(</span>
+  <span class="token string">"./座右铭.txt"</span><span class="token punctuation">,</span>
+  <span class="token string">"择其善者而从之，其不善者而改之。"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> flag<span class="token punctuation">:</span> <span class="token string">"a"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token keyword">throw</span> status<span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"追加成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>流式写入</strong><br>语法：<code>fs.createWriteStream(path[,options]);</code><br>参数说明：</p>
+<ul>
+<li>path 文件路径</li>
+<li>options 选项配置(可选)<br>返回值：Object<br>代码示例：</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">/**
+ * 观书有感.txt
+ */</span>
+<span class="token comment" spellcheck="true">// 1.导入 fs</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2.创建写入流对象</span>
+<span class="token keyword">const</span> ws <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">"./观书有感.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.write</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"半亩方塘一鉴开\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"天光云影共徘徊\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"问渠那得清如许\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"为有源头活水来\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 4.关闭通道</span>
+ws<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>读取文件应用场景</strong></p>
+<ul>
+<li>电脑开机</li>
+<li>程序运行</li>
+<li>编辑器打开文件</li>
+<li>查看图片</li>
+<li>播放视频</li>
+<li>播放音乐</li>
+<li>Git 查看日志</li>
+<li>上传文件</li>
+<li>查看聊天记录</li>
+</ul>
+<p><strong>文件读取</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>readFile</td>
+<td>异步读取</td>
+</tr>
+<tr>
+<td>readFileSync</td>
+<td>同步读取</td>
+</tr>
+<tr>
+<td>createReadStream</td>
+<td>流式读取</td>
+</tr>
+</tbody></table>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 1.导入 fs</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2.创建读取流对象</span>
+<span class="token keyword">const</span> rs <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">createReadStream</span><span class="token punctuation">(</span><span class="token string">"./观书有感.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.绑定 data 事件 chunk 块儿 大块儿</span>
+rs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"data"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>chunk<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 65536 字节 => 64KB</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+rs<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">"end"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"读取完成"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"半亩方塘一鉴开\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"天光云影共徘徊\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"问渠那得清如许\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"为有源头活水来\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 4.关闭通道</span>
+ws<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>文件移动与重命名</strong><br>在 Node.js 中，我们可以使用 rename 或 renameSync 来移动或重命名 文件或文件夹<br>语法：<br><code>fs.rename(oldPath,newPath,callback)</code><br><code>fs.renameSync(oldPath,newPath,callback)</code><br>参数说明：</p>
+<ul>
+<li>oldPath 文件当前路径</li>
+<li>newPath 文件新的路径</li>
+<li>callback 操作后的回调<br>代码示例</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 1.导入 fs</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2.调用 rename 方法</span>
+fs<span class="token punctuation">.</span><span class="token function">rename</span><span class="token punctuation">(</span><span class="token string">"./观书有感.txt"</span><span class="token punctuation">,</span> <span class="token string">"./论语.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.文件的移动</span>
+fs<span class="token punctuation">.</span><span class="token function">rename</span><span class="token punctuation">(</span><span class="token string">"./data.txt"</span><span class="token punctuation">,</span> <span class="token string">"../资料/data.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>文件删除</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 1.导入 fs</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2.调用 unlink 方法  unlinkSync</span>
+fs<span class="token punctuation">.</span><span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string">"./观书有感.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.调用 rm 方法 14.4  rmSync</span>
+fs<span class="token punctuation">.</span><span class="token function">rm</span><span class="token punctuation">(</span><span class="token string">"./观书有感.txt"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"操作成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p><strong>文件夹操作</strong></p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 1.导入 fs</span>
+<span class="token keyword">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"fs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2-1.创建文件夹 mkdir</span>
+fs<span class="token punctuation">.</span><span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token string">"./html"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"创建失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"创建成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2-2.递归创建</span>
+fs<span class="token punctuation">.</span><span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token string">"./a/b/c"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> recursive<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"创建失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"创建成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2-3 读取文件夹</span>
+fs<span class="token punctuation">.</span><span class="token function">readdir</span><span class="token punctuation">(</span><span class="token string">"../about"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"读取失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2-4 删除文件夹</span>
+fs<span class="token punctuation">.</span><span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token string">"./html"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"删除失败"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"删除成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 2-5 递归文件夹</span>
+fs<span class="token punctuation">.</span><span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token string">"./html"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> recursive<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"删除失败"</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"删除成功"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 3.查看资料信息</span>
+fs<span class="token punctuation">.</span><span class="token function">stat</span><span class="token punctuation">(</span><span class="token string">'../资料/笑看风云.MP4'</span><span class="token punctuation">,</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span>data<span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'操作失败'</span><span class="token punctuation">)</span>；
+    <span class="token keyword">return</span>
+  <span class="token punctuation">}</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="路径"><a href="#路径" class="headerlink" title="路径"></a><strong>路径</strong></h2><ul>
+<li>相对路径 相对路径参照物：命令行的工作目录</li>
+<li>绝对路径 __dirname:全局变量 保存的是所在文件夹的所在目录的绝对路径</li>
+</ul>
+<p><strong>path 模块</strong></p>
+<ul>
+<li>resolve 拼接规范的绝对路径</li>
+<li>sep 获取操作系统的路径分隔符</li>
+<li>parse 解析路径并返回对象</li>
+<li>basename 获取路径的基础名称</li>
+<li>dirname 获取路径的目录名</li>
+<li>extname 获取路径的扩展名</li>
+</ul>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a><strong>HTTP</strong></h2><p>协议：双方共同遵守的约定<br><strong>请求行</strong></p>
+<ul>
+<li>请求方法<ul>
+<li>GET 主要作用于获取数据</li>
+<li>POST 主要作用于新增数据</li>
+<li>PUT/PATCH 主要作用于更新数据</li>
+<li>DELETE 主要作用于删除数据</li>
+</ul>
+</li>
+<li>URL<ul>
+<li>协议名</li>
+<li>主机名</li>
+<li>端口号</li>
+<li>路径</li>
+<li>查询字符串</li>
+</ul>
+</li>
+<li>HTTP 版本号<ul>
+<li>1.0</li>
+<li>1.1</li>
+<li>2</li>
+<li>3<!-- P41 --></li>
+</ul>
+</li>
+</ul>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ChengYM</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/04/15/18-nodejs/">http://example.com/2023/04/15/18-nodejs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">兴趣使然的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="/img/03.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/02/11/17-vue/"><img class="next-cover" src="/img/loading.gif" data-original="/img/02.jpg" onerror="onerror=null;src='/img/lazyload.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">VUE</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/30/04-js-shu-li/" title="JS梳理"><img class="cover" src="/img/loading.gif" data-original="/img/04.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-30</div><div class="title">JS梳理</div></div></a></div><div><a href="/2022/09/10/06-js-shen-qian-fu-zhi/" title="JS深浅复制"><img class="cover" src="/img/loading.gif" data-original="/img/01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">JS深浅复制</div></div></a></div><div><a href="/2022/09/18/07-promise/" title="手写Promise"><img class="cover" src="/img/loading.gif" data-original="/img/02.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-18</div><div class="title">手写Promise</div></div></a></div><div><a href="/2022/11/12/13-ts/" title="TS"><img class="cover" src="/img/loading.gif" data-original="/img/03.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">TS</div></div></a></div><div><a href="/2023/01/07/16-angular/" title="Angular"><img class="cover" src="/img/loading.gif" data-original="/img/01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-07</div><div class="title">Angular</div></div></a></div><div><a href="/2023/02/11/17-vue/" title="VUE"><img class="cover" src="/img/loading.gif" data-original="/img/02.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-11</div><div class="title">VUE</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengYM</div><div class="author-info__description">你必须非常努力,才能看起来毫不费力</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ChengYM-98"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">兴趣使然的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#NodeJS-%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">NodeJS 概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer-%E7%BC%93%E5%86%B2%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">Buffer(缓冲器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">进程与线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fs-%E6%A8%A1%E5%9D%97"><span class="toc-number">4.</span> <span class="toc-text">fs 模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84"><span class="toc-number">5.</span> <span class="toc-text">路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">6.</span> <span class="toc-text">HTTP</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/18-nodejs/" title="NodeJS"><img src="/img/loading.gif" data-original="/img/03.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="NodeJS"/></a><div class="content"><a class="title" href="/2023/04/15/18-nodejs/" title="NodeJS">NodeJS</a><time datetime="2023-04-15T01:27:02.000Z" title="发表于 2023-04-15 09:27:02">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/11/17-vue/" title="VUE"><img src="/img/loading.gif" data-original="/img/02.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="VUE"/></a><div class="content"><a class="title" href="/2023/02/11/17-vue/" title="VUE">VUE</a><time datetime="2023-02-11T06:10:21.000Z" title="发表于 2023-02-11 14:10:21">2023-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/07/16-angular/" title="Angular"><img src="/img/loading.gif" data-original="/img/01.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="Angular"/></a><div class="content"><a class="title" href="/2023/01/07/16-angular/" title="Angular">Angular</a><time datetime="2023-01-07T12:01:02.000Z" title="发表于 2023-01-07 20:01:02">2023-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer"><img src="/img/loading.gif" data-original="/img/05.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="LeetCode-剑指Offer"/></a><div class="content"><a class="title" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer">LeetCode-剑指Offer</a><time datetime="2022-11-20T06:01:02.000Z" title="发表于 2022-11-20 14:01:02">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法"><img src="/img/loading.gif" data-original="/img/04.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法">排序算法</a><time datetime="2022-11-12T08:33:19.000Z" title="发表于 2022-11-12 16:33:19">2022-11-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ChengYM</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script></body></html>

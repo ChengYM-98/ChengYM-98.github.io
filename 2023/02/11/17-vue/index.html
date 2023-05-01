@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>VUE | 兴趣使然的博客</title><meta name="author" content="ChengYM"><meta name="copyright" content="ChengYM"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MVVM 设计模式 m:model数据 v:view视图 vm:viewModel:视图数据连接层    const app &#x3D; Vue.createApp({   &#x2F;&#x2F; M层   data(){     return {       message:&#39;hello world&#39;     }   },   &#x2F;&#x2F; V层   template:&#39;&lt;div&gt;{{message}}&lt;&#x2F;div&gt;&#39;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE">
+<meta property="og:url" content="http://example.com/2023/02/11/17-vue/index.html">
+<meta property="og:site_name" content="兴趣使然的博客">
+<meta property="og:description" content="MVVM 设计模式 m:model数据 v:view视图 vm:viewModel:视图数据连接层    const app &#x3D; Vue.createApp({   &#x2F;&#x2F; M层   data(){     return {       message:&#39;hello world&#39;     }   },   &#x2F;&#x2F; V层   template:&#39;&lt;div&gt;{{message}}&lt;&#x2F;div&gt;&#39;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/02.jpg">
+<meta property="article:published_time" content="2023-02-11T06:10:21.000Z">
+<meta property="article:modified_time" content="2023-05-01T15:06:08.601Z">
+<meta property="article:author" content="ChengYM">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/02.jpg"><link rel="shortcut icon" href="/img/faviconC.png"><link rel="canonical" href="http://example.com/2023/02/11/17-vue/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'VUE',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-01 23:06:08'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="兴趣使然的博客" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/02.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">兴趣使然的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">VUE</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-11T06:10:21.000Z" title="发表于 2023-02-11 14:10:21">2023-02-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-01T15:06:08.601Z" title="更新于 2023-05-01 23:06:08">2023-05-01</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/">前端进阶</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="VUE"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a><strong>MVVM</strong></h2><ul>
+<li>设计模式<ul>
+<li>m:model数据</li>
+<li>v:view视图</li>
+<li>vm:viewModel:视图数据连接层</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> app <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// M层</span>
+  <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      message<span class="token punctuation">:</span><span class="token string">'hello world'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// V层</span>
+  template<span class="token punctuation">:</span><span class="token string">'&lt;div>{{message}}&lt;/div>'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// VM层</span>
+<span class="token keyword">const</span> vm <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#root'</span><span class="token punctuation">)</span>
+ 
+</code></pre>
+<h2 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a><strong>Vue生命周期</strong></h2><p>  在某一时刻会自动执行的函数</p>
+<ol>
+<li><p>beforeCreate：实例刚刚被创建，数据观测，事件，watch/computed都还没有初始化</p>
+</li>
+<li><p>created：实例已经被创建完成，数据观测，事件，watch/computed都被完成初始化，但DOM还没有渲染</p>
+</li>
+<li><p>beforeMount：在挂载开始之前被调用，即在调用mount方法之前调用</p>
+</li>
+<li><p>mounted：el被新创建的vm.el替换，并挂载到实例上去之后调用，也就是dom渲染完成</p>
+</li>
+<li><p>beforeUpdate：状态更新之前执行，发生在虚拟dom重新渲染和打补丁之前</p>
+</li>
+<li><p>updated：状态更新完成后调用，发生在虚拟dom重新渲染和打补丁之后</p>
+</li>
+<li><p>beforeUnmount：实例卸载之前调用，在这一步，实例仍然完全可用</p>
+</li>
+<li><p>unmounted：Vue实例卸载之后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁</p>
+</li>
+</ol>
+<h2 id="常用模板语法"><a href="#常用模板语法" class="headerlink" title="常用模板语法"></a><strong>常用模板语法</strong></h2><ul>
+<li><p>v-html</p>
+<ul>
+<li>通过html的方式解析标签内容</li>
+</ul>
+</li>
+<li><p>v-bind(:)</p>
+<ul>
+<li>数据与标签属性绑定</li>
+</ul>
+</li>
+<li><p>v-once</p>
+<ul>
+<li>使用初始数据，不做变更</li>
+</ul>
+</li>
+<li><h2 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h2></li>
+<li><p>v-on(@)</p>
+<ul>
+<li>事件绑定指令</li>
+</ul>
+</li>
+</ul>
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">ChengYM</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/11/17-vue/">http://example.com/2023/02/11/17-vue/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">兴趣使然的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JS/">JS</a></div><div class="post_share"><div class="social-share" data-image="/img/02.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/15/18-nodejs/"><img class="prev-cover" src="/img/loading.gif" data-original="/img/03.jpg" onerror="onerror=null;src='/img/lazyload.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">NodeJS</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/07/16-angular/"><img class="next-cover" src="/img/loading.gif" data-original="/img/01.jpg" onerror="onerror=null;src='/img/lazyload.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Angular</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/30/04-js-shu-li/" title="JS梳理"><img class="cover" src="/img/loading.gif" data-original="/img/04.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-30</div><div class="title">JS梳理</div></div></a></div><div><a href="/2022/09/10/06-js-shen-qian-fu-zhi/" title="JS深浅复制"><img class="cover" src="/img/loading.gif" data-original="/img/01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-10</div><div class="title">JS深浅复制</div></div></a></div><div><a href="/2022/09/18/07-promise/" title="手写Promise"><img class="cover" src="/img/loading.gif" data-original="/img/02.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-18</div><div class="title">手写Promise</div></div></a></div><div><a href="/2022/11/12/13-ts/" title="TS"><img class="cover" src="/img/loading.gif" data-original="/img/03.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-12</div><div class="title">TS</div></div></a></div><div><a href="/2023/01/07/16-angular/" title="Angular"><img class="cover" src="/img/loading.gif" data-original="/img/01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-01-07</div><div class="title">Angular</div></div></a></div><div><a href="/2023/04/15/18-nodejs/" title="NodeJS"><img class="cover" src="/img/loading.gif" data-original="/img/03.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-15</div><div class="title">NodeJS</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/loading.gif" data-original="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">ChengYM</div><div class="author-info__description">你必须非常努力,才能看起来毫不费力</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ChengYM-98"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">兴趣使然的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MVVM"><span class="toc-number">1.</span> <span class="toc-text">MVVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">2.</span> <span class="toc-text">Vue生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">常用模板语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#v-if"><span class="toc-number">4.</span> <span class="toc-text">v-if</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/04/15/18-nodejs/" title="NodeJS"><img src="/img/loading.gif" data-original="/img/03.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="NodeJS"/></a><div class="content"><a class="title" href="/2023/04/15/18-nodejs/" title="NodeJS">NodeJS</a><time datetime="2023-04-15T01:27:02.000Z" title="发表于 2023-04-15 09:27:02">2023-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/11/17-vue/" title="VUE"><img src="/img/loading.gif" data-original="/img/02.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="VUE"/></a><div class="content"><a class="title" href="/2023/02/11/17-vue/" title="VUE">VUE</a><time datetime="2023-02-11T06:10:21.000Z" title="发表于 2023-02-11 14:10:21">2023-02-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/07/16-angular/" title="Angular"><img src="/img/loading.gif" data-original="/img/01.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="Angular"/></a><div class="content"><a class="title" href="/2023/01/07/16-angular/" title="Angular">Angular</a><time datetime="2023-01-07T12:01:02.000Z" title="发表于 2023-01-07 20:01:02">2023-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer"><img src="/img/loading.gif" data-original="/img/05.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="LeetCode-剑指Offer"/></a><div class="content"><a class="title" href="/2022/11/20/15-leetcode-jian-zhi-offer/" title="LeetCode-剑指Offer">LeetCode-剑指Offer</a><time datetime="2022-11-20T06:01:02.000Z" title="发表于 2022-11-20 14:01:02">2022-11-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法"><img src="/img/loading.gif" data-original="/img/04.jpg" onerror="this.onerror=null;this.src='/img/lazyload.gif'" alt="排序算法"/></a><div class="content"><a class="title" href="/2022/11/12/14-pai-xu-suan-fa/" title="排序算法">排序算法</a><time datetime="2022-11-12T08:33:19.000Z" title="发表于 2022-11-12 16:33:19">2022-11-12</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By ChengYM</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(e){e.imageLazyLoadSetting.processImages=t;var n=e.imageLazyLoadSetting.isSPA,i=e.imageLazyLoadSetting.preloadRatio||1,r=o();function o(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){n&&(r=o());for(var t,a=0;a<r.length;a++)0<=(t=(t=r[a]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(e.innerHeight*i||document.documentElement.clientHeight*i)&&function(){var t,e,n,i,o=r[a];e=function(){r=r.filter(function(t){return o!==t})},(t=o).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,i=t.getAttribute("data-original"),n.onload=function(){t.src=i,t.removeAttribute("data-original"),e&&e()},t.src!==i&&(n.src=i))}()}function a(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",a),e.addEventListener("resize",a),e.addEventListener("orientationchange",a)}(this);</script></body></html>
